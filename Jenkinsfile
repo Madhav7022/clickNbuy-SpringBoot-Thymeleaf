@@ -23,7 +23,7 @@ pipeline {
         // Free port 8080 if any process is using it
                 sh 'sudo fuser -k 8080/tcp || true'
         // Start new container
-                sh 'docker run -d --name clicknbuy-app -p 8080:8080 clicknbuy-app'
+                sh 'docker run -d --name clicknbuy-app -p 9090:8080 clicknbuy-app'
             }
         }
 

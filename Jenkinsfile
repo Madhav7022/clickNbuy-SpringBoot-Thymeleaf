@@ -18,9 +18,14 @@ pipeline {
 
         stage('Run Docker Container') {
             steps {
+        // Stop old container if running
                 sh 'docker rm -f clicknbuy-app || true'
+        // Free port 8080 if any process is using it
+                sh 'sudo fuser -k 8080/tcp || true'
+        // Start new container
                 sh 'docker run -d --name clicknbuy-app -p 8080:8080 clicknbuy-app'
             }
         }
+
     }
 }

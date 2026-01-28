@@ -14,6 +14,14 @@ pipeline {
             }
         }
 
+        stage('Docker Build & Run') {
+            steps {
+                sh 'docker build -t clicknbuy-app .'
+                sh 'docker run -d -p 8080:8080 clicknbuy-app'
+            }
+        }
+
+
         stage('Build') {
             steps {
                 // Clean and build project

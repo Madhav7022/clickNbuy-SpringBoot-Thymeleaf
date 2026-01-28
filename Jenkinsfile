@@ -7,6 +7,14 @@ pipeline {
 
     stages {
 
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/Madhav7022/clickNbuy-SpringBoot-Thymeleaf.git',
+                     credentialsId: 'github-token'
+            }
+        }
+
         stage('Checkout Code') {
             steps {
                 checkout scm
